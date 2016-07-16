@@ -13,6 +13,9 @@ install:
   - arduino --board esp8266:esp8266:generic --save-prefs
 script:
   - arduino --verify --board esp8266:esp8266:generic $PWD/EspToCloud-Emoncms/EspToCloud-Emoncms.ino
+  - arduino --verify --board esp8266:esp8266:generic $PWD/EspToCloud-ThingSpeak/EspToCloud-ThingSpeak.ino
+  - arduino --verify --board esp8266:esp8266:generic $PWD/EspToCloud-KeenIO/EspToCloud-KeenIO.ino
+  - arduino --verify --board esp8266:esp8266:generic $PWD/EspToCloud-All/EspToCloud-All.ino
 notifications:
   email:
     on_success: change

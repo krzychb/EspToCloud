@@ -4,10 +4,10 @@
   Please check repository below for details
 
   Repository: https://github.com/krzychb/EspToCloud
-  Version: Emoncms
-  File: EspToCloud-Emoncms.ino
+  Version: KeenIO
+  File: EspToCloud-KeenIO.ino
   Revision: 0.1.1
-  Date: 18-Jul-2016
+  Date: 17-Jul-2016
   Author: krzychb at gazeta.pl
 
   Copyright (c) 2016 Krzysztof Budzynski. All rights reserved.
@@ -42,10 +42,11 @@ const char* password = "********";
 
 #define UPDATE_PERIOD 60000
 #define TIMEOUT_PERIOD 1000
-#define DATA_HOST "emoncms.org"
+#define DATA_HOST "api.keen.io"
 #define API_KEY "enter-your-api-key-here"
+#define REQUEST_URL "enter-your-KeenIO-request-url-here"
 
-void logToEmoncms(void)
+void logToKeenIO(void)
 {
   WiFiClient client;
   static long dataLogTimer;
@@ -74,18 +75,25 @@ void logToEmoncms(void)
 
   Serial.print("Sending > ");
 
+  String jsonData = String("{") +
+          "\"EspCloud_UpTime\":" + String (dataLogTimer / 60000) +
+          ",\"EspCloud_HeapSize\":" + String (system_get_free_heap_size()) +
+          ",\"EspCloud_TransmissionAttempts\":" + String (transmissionAttempts) +
+          ",\"EspCloud_ReplyTimeouts\":" + String (replyTimeouts) +
+          ",\"EspCloud_ConnectionFailures\":" + String (connectionFailures) +
+          ",\"EspCloud_PostingTime\":" + String (postingTime) +
+          "}";
+
   // send the data to the host
   client.print(
-  String("GET http://") + DATA_HOST +
-        "/input/post.json?json={" +
-          "EspCloud_UpTime:" + String (dataLogTimer / 60000) +
-          ",EspCloud_HeapSize:" + String (system_get_free_heap_size()) +
-          ",EspCloud_TransmissionAttempts:" + String (transmissionAttempts) +
-          ",EspCloud_ReplyTimeouts:" + String (replyTimeouts) +
-          ",EspCloud_ConnectionFailures:" + String (connectionFailures) +
-          ",EspCloud_PostingTime:" + String (postingTime) +
-          "}&apikey=" + API_KEY + "\r\n" +
-        "Connection: close\r\n\r\n");
+    String("POST ") + REQUEST_URL + " HTTP/1.1\r\n" +
+           "Host: " + DATA_HOST + "\r\n" +
+           "Content-Type: application/json\r\n" +
+           "User-Agent: ESP8266 MyCloud\r\n" +
+           "Authorization:" + API_KEY + " \r\n" +
+           "Content-Length:" + jsonData.length() + "\r\n" +
+           "Connection: close\r\n\r\n");
+  client.print(jsonData);
 
   // wait for reply from the host
   while (!client.available())
@@ -118,7 +126,7 @@ void setup(void)
 {
   Serial.begin(115200);
   Serial.println();
-  Serial.println("EspToCloud-Emoncms 0.1.1");
+  Serial.println("EspToCloud-KeenIO 0.1.1");
 
   Serial.printf("Connecting to %s\n", ssid);
   WiFi.begin(ssid, password);
@@ -138,5 +146,5 @@ void setup(void)
 
 void loop(void)
 {
-  logToEmoncms();
+  logToKeenIO();
 }
