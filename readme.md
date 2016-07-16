@@ -3,6 +3,23 @@
 A collection of code snippets I am using frequently to post data from ESP8266 to the cloud for storage, visualization and analysis.
 
 
+## Table of Contents
+- [Introduction](#introduction)
+- [Functionality](#functionality)
+- [Application](#application)
+  - [Emoncms](#emoncms)
+  - [ThinkSpeak](#thinkspeak) :construction:
+  - [KeenIO](#keenio) :construction:
+  - [EspToCloud](#espeocloud) :construction:
+- [Compatibility](#compatibility)
+  - [Hardware](#hardware)
+  - [Arduino Core](#arduino-core)
+  - [Programming Environment](#programming-environment)
+- [Contribute](#contribute)
+- [Credits](#credits)
+- [License](#license)
+
+
 ## Introduction
 
 When doing projects with ESP8266 I often need to collect and analyse some data. For instance process variables as humidity or temperature like in [OnlineHumidifier](https://github.com/krzychb/OnlineHumidifier) project. On other occasion I may need to record and compare up time as well as performance parameters for couple of ESP8266 modules running various versions of similar application as in [EspFire2012](https://github.com/krzychb/EspFire2012) project. 
@@ -10,6 +27,8 @@ When doing projects with ESP8266 I often need to collect and analyse some data. 
 In cases like that, instead of developing storage and analysis tools on my own, it may be much easier, quicker and convenient to use external cloud service. There are several services like that to provide you with ready and tested tools to store, visualize and analyze the data.
 
 Below is summary of three cloud services I am using on my projects together with sample sketches. 
+
+## Functionality
 
 Each sketch is posting the following variables to respective cloud service:
 
@@ -41,8 +60,9 @@ To make particular sketch running you need to:
   const char* password = "********";
   ```
 
+## Application
 
-### EspToCloud-Emoncms
+### Emoncms
 
 The first cloud service I have tried and adopted to my needs was [Emoncms](http://emoncms.org/). It is optimized for processing, logging and visualising energy, temperature and other environmental data. I am using it quite frequently for all sorts of data, also those not mentioned by Emoncms, and found this service very quick and reliable. Once I had an issue with posting data and [reported](https://community.openenergymonitor.org/t/all-my-feeds-stopped-recording-data-on-emoncms-org/828) it on the forum. It was resolved within less than 12 hours what I really like. Did I mention it is a free service? Excellent job Emoncms team!
 
@@ -59,10 +79,10 @@ What can be improved:
 [Check the sketch](EspToCloud-Emoncms)
 
 
-### EspToCloud-ThinkSpeak :construction:
+### ThinkSpeak :construction:
 
 
-### EspToCloud-KeenIO :construction:
+### KeenIO :construction:
 
 
 ### EspToCloud :construction:
