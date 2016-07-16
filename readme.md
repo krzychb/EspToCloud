@@ -1,4 +1,4 @@
-# EspToCloud
+# EspToCloud [![Build Status](https://travis-ci.org/krzychb/EspToCloud.svg?branch=master)](https://travis-ci.org/krzychb/EspToCloud)
 
 A collection of code snippets I am using frequently to post data from ESP8266 to the cloud for storage, visualization and analysis.
 
@@ -76,7 +76,7 @@ What can be improved:
 * Provide possibility to generate new API keys
 * Add more stuff to show on dashboard like links and graphics 
 
-[Check the sketch](EspToCloud-Emoncms)
+[Check the sketch](EspToCloud-Emoncms/EspToCloud-Emoncms.ino)
 
 
 ### ThinkSpeak :construction:
