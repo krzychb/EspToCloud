@@ -51,7 +51,7 @@ To make particular sketch running you need to:
 3. For KeenIO you will also need to update request url (it looks like ``` #define REQUEST_URL_KEENIO "/3.0/projects/5359bcb513e406c26c910dac/events/esp" ```) in the following line:
 
   ```cpp
-  #define REQUEST_URL "enter-your-KeenIO-request-url-here"
+  #define REQUEST_URL "enter-your-api-key-here"
   ```
 4. Enter ssid and password to your Wi-Fi network (instead of ``` ******** ```, see below), so the module can join the network:
 
