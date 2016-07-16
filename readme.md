@@ -18,21 +18,24 @@ Each sketch is posting the following variables to respective cloud service:
 * number of transmission attempts to the cloud service : ``` EspCloud_TransmissionAttempts ```
 * number of reply timeouts by the cloud service : ``` EspCloud_ReplyTimeouts ```
 * number of connection failures : ``` EspCloud_ConnectionFailures ```
-* time in miliseconds that took to transmit the data and obtain a reply from the service in previous post request ``` EspCloud_PostingTime ```
+* time in miliseconds that took to transmit the data and obtain a reply from the service in previous post request : ``` EspCloud_PostingTime ```
 
 To make particular sketch running you need to:
 
 1. Set up an account on particular cloud service.
 
 2. Copy and paste an API key provided by the service (it typically looks like ``` 9a3e3c9cf65c70a597097b065dcb24e3 ```) to the sketch in the following line:
+
   ```cpp
   #define API_KEY "enter-your-api-key-here"
   ```
 3. For KeenIO you will also need to update request url (it looks like ``` #define REQUEST_URL_KEENIO "/3.0/projects/5359bcb513e406c26c910dac/events/esp" ```) in the following line:
+
   ```cpp
   #define REQUEST_URL "enter-your-KeenIO-request-url-here"
   ```
-4. Enter ssid and password to your Wi-Fi network (instead of ``` ******** ```, see below), so the module can join the network.
+4. Enter ssid and password to your Wi-Fi network (instead of ``` ******** ```, see below), so the module can join the network:
+
   ```cpp
   const char* ssid = "********";
   const char* password = "********";
