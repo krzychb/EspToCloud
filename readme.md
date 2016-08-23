@@ -40,6 +40,10 @@ Each sketch is posting the following variables to respective cloud service:
 * number of connection failures : `EspCloud_ConnectionFailures`
 * time in milliseconds that took to transmit the data and obtain a reply from the service in previous post request : `EspCloud_PostingTime`
 
+See the [program flow diagram](pictures/flow-diagram.png) how data are posted to the cloud.
+
+[![alt text](pictures/flow-diagram-header.png "Shortcut to the data posting flow diagram")](pictures/flow-diagram.png)
+
 
 ## Installation
 
@@ -82,7 +86,9 @@ The following chapters contain my thoughts on using three cloud services. They c
 
 ### Emoncms
 
-The first cloud service I have tried and adopted to my needs is [Emoncms](http://emoncms.org/). It is optimized for processing, logging and visualizing energy, temperature and other environmental data. I am using it quite frequently for all sorts of data, also those not mentioned by Emoncms, and found this service very quick and reliable. Once I had an issue with posting data and [reported](https://community.openenergymonitor.org/t/all-my-feeds-stopped-recording-data-on-emoncms-org/828) it on the forum. It was resolved within less than 12 hours what I really like. Did I mention it is a free service? Excellent job Emoncms team!
+The first cloud service I have tried and adopted to my needs is [Emoncms](http://emoncms.org/). It is optimized for processing, logging and visualizing energy, temperature and other environmental data. 
+
+I am using Emoncms quite frequently to save and visualize all types of data, also those not mentioned by Emoncms, like processor up time or free memory to help me troubleshoot application performance issues. I found this service very quick and reliable. Once I had an issue with posting data and [reported](https://community.openenergymonitor.org/t/all-my-feeds-stopped-recording-data-on-emoncms-org/828) it on the forum. It was resolved within less than 12 hours what I really like. Did I mention it is a free service? Excellent job Emoncms team!
 
 ![alt text](pictures/emoncms-dashboard.png "Emoncms dashboard")
 
@@ -102,7 +108,9 @@ On line dashboard with the data charts - http://emoncms.org/dashboard/view&id=35
 
 ### ThingSpeak
 
-When browsing IoT projects on internet, you may find a lot of screen shots of charts created with [ThinkSpeak](https://thingspeak.com/). That finally attracted me to trying this service as well. I quickly realized that ThinkSpeak makes it really easy to post and visualize data. There are a lot of configuration options to customize number of points displayed, do data averaging, change charts titles and colors, etc. What I did not like was lack of possibility to display more than a single variable on a chart. Finally I have noticed and pressed "MATLAB Visualization" button and got totally amazed. ThinkSpeak provides access to wealth of features of MATLAB. If you have to do some processing of data before showing them off then ThinkSpeak is a tool for you. You will get access to MATLAB engine to do anything you need to do with the data, and to show the data on-line on almost any [chart or plot](http://www.mathworks.com/products/matlab/plot-gallery.html?refresh=true) you may think of. I have also tried contacting support and my issue with deleting unused channels was resolved within couple of days. Did I mention that use of ThinkSpeak including MATLAB to crank and visualize your data is free? 
+When browsing IoT projects on internet, you may find a lot of screen shots of charts created with [ThinkSpeak](https://thingspeak.com/). That finally attracted me to trying this service as well.
+
+I quickly realized that ThinkSpeak makes it really easy to post and visualize data. There are a lot of configuration options to customize number of points displayed, do data averaging, change charts titles and colors, etc. What I did not like was lack of possibility to display more than a single variable on a chart. Finally I have noticed and pressed "MATLAB Visualization" button and got totally amazed. ThinkSpeak provides access to wealth of features of MATLAB. If you have to do some processing of data before showing them off then ThinkSpeak is a tool for you. You will get access to MATLAB engine to do anything you need to do with the data, and to show the data on-line on almost any [chart or plot](http://www.mathworks.com/products/matlab/plot-gallery.html?refresh=true) you may think of. I have also tried contacting support and my issue with deleting unused channels was resolved within couple of days. Did I mention that use of ThinkSpeak including MATLAB to crank and visualize your data is free? 
 
 ![alt text](pictures/thingspeak-dashboard.png "ThinkSpeak dashboard")
 
@@ -122,7 +130,9 @@ On line dashboard with the data charts - https://thingspeak.com/channels/130476
 
 ### Keen IO
 
-I got aware of this service because of [Keen IO](https://twitter.com/keen_io) liking my tweets. Then I got intrigued by Keen IO's ads offering API for analytics and pop-ups inviting to ask for support whenever I visited https://keen.io/. I did not have any attractive IoT project involving data analytics and put this one for later. Finally I decided study API documentation and after some testing with [cURL](https://en.wikipedia.org/wiki/CURL) I managed to post data to KeenIO's cloud. With this service you will be able to post data for free with rate of about once per a minute (50,000 per month). To post faster you need to pay. According to [Product / Plans](https://keen.io/plans/self-service/), as of August 2016, you may post 15,000,000 events per month for $1,000 (almost 6 times per second). Events are recorded as individual JSON objects and documentation provides extensive [API](https://keen.io/docs/api/) to manage the data. This is including [data enrichment](https://keen.io/docs/api/#data-enrichment) to e.g. associate a client’s IP address with geographical location of the client when the event was recorded. "Out of the box" visualization is provided on a *Dashboard* with the *Explorer* to set up basic charts and metrics. I tried once to use offered support and ask what charts I can get using *Dashboard* /*Explorer*. Nobody contact me back but I have managed to do it myself. I assume hobbyists are not the target customers. Feature rich data [analysis](https://keen.io/guides/tags/data-analysis/) and [visualization](https://keen.io/guides/tags/data-visualization/) is available using Keen IO’s [SDK's](https://keen.io/docs/sdks/). It is provided for several platforms / languages that you need to integrate with your system by yourself.
+I got aware of this service because of [Keen IO](https://twitter.com/keen_io) liking my tweets. Then I got intrigued by Keen IO's ads offering API for analytics and pop-ups inviting to ask for support whenever I visited https://keen.io/. 
+
+I did not have any attractive IoT project involving data analytics and put trying Keen IO for later. Finally I decided study API documentation and after some testing with [cURL](https://en.wikipedia.org/wiki/CURL) I managed to post data to Keen IO's cloud. With this service you will be able to post data for free with rate of about once per a minute (50,000 per month). To post faster you need to pay. According to [Product / Plans](https://keen.io/plans/self-service/), as of August 2016, you may post 15,000,000 events per month for $1,000 (almost 6 times per second). Events are recorded as individual JSON objects and documentation provides extensive [API](https://keen.io/docs/api/) to manage the data. This is including [data enrichment](https://keen.io/docs/api/#data-enrichment) to e.g. associate a client’s IP address with geographical location of the client when the event was recorded. "Out of the box" visualization is provided on a *Dashboard* with the *Explorer* to set up basic charts and metrics. Feature rich data [analysis](https://keen.io/guides/tags/data-analysis/) and [visualization](https://keen.io/guides/tags/data-visualization/) is available using Keen IO’s [SDK's](https://keen.io/docs/sdks/). It is provided for several platforms / languages that you need to integrate with your system by yourself.
 
 ![alt text](pictures/keenio-dashboard.png "Keen IO dashboard")
 
