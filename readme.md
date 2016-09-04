@@ -132,7 +132,7 @@ On line dashboard with the data charts - https://thingspeak.com/channels/130476
 
 I got aware of this service because of [Keen IO](https://twitter.com/keen_io) liking my tweets. Then I got intrigued by Keen IO's ads offering API for analytics and pop-ups inviting to ask for support whenever I visited https://keen.io/. 
 
-I did not have any attractive IoT project involving data analytics and put trying Keen IO for later. Finally I decided study API documentation and after some testing with [cURL](https://en.wikipedia.org/wiki/CURL) I managed to post data to Keen IO's cloud. With this service you will be able to post data for free with rate of about once per a minute (50,000 per month). To post faster you need to pay. According to [Product / Plans](https://keen.io/plans/self-service/), as of August 2016, you may post 15,000,000 events per month for $1,000 (almost 6 times per second). Events are recorded as individual JSON objects and documentation provides extensive [API](https://keen.io/docs/api/) to manage the data. This is including [data enrichment](https://keen.io/docs/api/#data-enrichment) to e.g. associate a client’s IP address with geographical location of the client when the event was recorded. "Out of the box" visualization is provided on a *Dashboard* with the *Explorer* to set up basic charts and metrics. Feature rich data [analysis](https://keen.io/guides/tags/data-analysis/) and [visualization](https://keen.io/guides/tags/data-visualization/) is available using Keen IO’s [SDK's](https://keen.io/docs/sdks/). It is provided for several platforms / languages that you need to integrate with your system by yourself.
+I did not have any attractive IoT project involving data analytics and put trying Keen IO for later. Finally I decided study API documentation and after some testing with [cURL](https://en.wikipedia.org/wiki/CURL) I managed to post data to Keen IO's cloud. With this service you will be able to post data for free with rate of about once per a minute (50,000 per month). To post faster you need to pay. According to [Product / Plans](https://keen.io/plans/self-service/), as of August 2016, you may post 15,000,000 events per month for $1,000 (almost 6 times per second). Events are recorded as individual JSON objects and documentation provides extensive [API](https://keen.io/docs/api/) to manage the data. This is including [data enrichment](https://keen.io/docs/api/#data-enrichment) to e.g. associate a client’s IP address with geographical location of the client when the event was recorded. "Out of the box" visualization is provided on a *Dashboard* with the *Explorer* to set up basic charts and metrics. Feature rich data [analysis](https://keen.io/guides/tags/data-analysis/) and [visualization](https://keen.io/guides/tags/data-visualization/) is available using Keen IO’s [SDK's](https://keen.io/docs/sdks/). It is provided for several platforms / languages that you need to integrate with your system by yourself. Keen IO is managed and supported by nice and quite [big team](https://keen.io/team).
 
 ![alt text](pictures/keenio-dashboard.png "Keen IO dashboard")
 
@@ -156,13 +156,13 @@ To provide some indication what to expect from a cloud service for free, out of 
 * number of reply timeouts by the cloud service : `EspCloud_ReplyTimeouts`
 * time in milliseconds that took to transmit the data and obtain a reply from the service in previous post request : `EspCloud_PostingTime`
 
-Table below contains data collected over the period of 15 days from 5 till 20 August 2016.
+Table below contains data collected over the period of one month from 5 August till 4 September 2016.
 
 | Parameter / Cloud Service | Emoncms | ThingSpeak | Keen IO |
 | :---: | :---: | :---: | :---: |
-| Number of Connection Failures | 2 | 2 | 6 |
-| Number of Reply Timeouts | 11 | 32 | 186 |
-| Average Posting Time [ms] | 140 | 430 | 730 |
+| Number of Connection Failures | 6 | 5 | 20 |
+| Number of Reply Timeouts | 29 | 104 | 321 |
+| Average Posting Time [ms] | 140 | 430 | 710 |
 
 The data have been posted by a single ESP8266 module using [this sketch](EspToCloud-All/EspToCloud-All.ino) to [Emoncms](http://emoncms.org/), [ThinkSpeak](https://thingspeak.com/) and [Keen IO](https://keen.io/). Positing period was 60 seconds for each application so individual services were contacted every 20 seconds. Module was running patiently and continuously without any restarts so I decided to picture it below. 
 
