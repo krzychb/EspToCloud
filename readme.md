@@ -103,8 +103,6 @@ What can be improved?
 
 Check example [sketch](EspToCloud-Emoncms/EspToCloud-Emoncms.ino) how to post data to [Emoncms](http://emoncms.org/).
 
-On line dashboard with the data charts - http://emoncms.org/dashboard/view&id=35389
-
 
 ### ThingSpeak
 
@@ -124,8 +122,6 @@ What can be improved?
 * Fixed number of up to eight fields per channel
 
 Check example [sketch](EspToCloud-ThingSpeak/EspToCloud-ThingSpeak.ino) how to post data to [ThinkSpeak](https://thingspeak.com/).
-
-On line dashboard with the data charts - https://thingspeak.com/channels/130476
 
 
 ### Keen IO
